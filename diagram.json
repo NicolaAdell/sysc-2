@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "author": "Fabrizio Carlassara",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 4.67,
+      "left": -5.33,
+      "attrs": { "builder": "pico-sdk" }
+    },
+    {
+      "type": "wokwi-ntc-temperature-sensor",
+      "id": "ntc1",
+      "top": 38.4,
+      "left": 148.8,
+      "rotate": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 163.15,
+      "left": 92.8,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 194.08,
+      "left": 93.73,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 126.53,
+      "left": 149.27,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 190.8,
+      "left": 148.87,
+      "rotate": 180,
+      "attrs": { "color": "blue" }
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -36.43, "left": 91.28, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -190.79,
+      "left": -69.63,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "ntc1:GND", "pico:GND.6", "black", [ "h-30.13", "v40.94" ] ],
+    [ "ntc1:VCC", "pico:3V3", "red", [ "h-53.54", "v-26.26" ] ],
+    [ "ntc1:OUT", "pico:GP26", "orange", [ "h-64.24", "v31.44" ] ],
+    [ "r2:1", "pico:GP16", "yellow", [ "v0" ] ],
+    [ "led2:A", "r2:2", "green", [ "v0" ] ],
+    [ "pico:GND.6", "r1:1", "black", [ "h0" ] ],
+    [ "r1:2", "led1:C", "yellow", [ "v0" ] ],
+    [ "led1:A", "pico:GP17", "yellow", [ "v0" ] ],
+    [ "pico:GND.6", "led2:C", "black", [ "h130.4", "v36.23" ] ],
+    [ "pico:GND.6", "pot1:GND", "black", [ "h0" ] ],
+    [ "pot1:VCC", "pico:3V3", "red", [ "v0" ] ],
+    [ "pot1:SIG", "pico:GP27", "orange", [ "v0" ] ],
+    [ "pico:GP5", "lcd1:SCL", "blue", [ "h-129.6", "v-197.45" ] ],
+    [ "lcd1:SDA", "pico:GP4", "gold", [ "h-50.22", "v201.26" ] ],
+    [ "lcd1:VCC", "pico:3V3", "red", [ "h-11", "v120.99", "h161.23", "v81.92" ] ],
+    [ "lcd1:GND", "pico:GND.1", "black", [ "h-25.82", "v181.04" ] ]
+  ],
+  "dependencies": {}
+}
