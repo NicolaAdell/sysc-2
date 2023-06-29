@@ -49,8 +49,8 @@ const uint8_t PWM_CALEFACCION = 17;
   pwm_config config = pwm_get_default_config();
 
   // - 100 Hz de frecuencia
-  static void pwm_config_set_clkdiv (&config, 125);
-  pwm_conf_set_wrap(&config, 10000)
+  pwm_config_set_clkdiv (&config, 125);
+  pwm_config_set_wrap(&config, 10000);
   pwm_init(slice, &config, true);
 
   // - Ancho de pulso inicial del 0%
@@ -95,7 +95,7 @@ bool muestreo_periodico(struct repeating_timer *t) {
     else {
       // Si es positivo: temperatura < setpoint -> caliento
       // Apagar un canal de PWM
-      pwm_set_gpio_level(PWMENFRIAMIENTO, 0);
+      pwm_set_gpio_level(PWM_ENFRIAMIENTO, 0);
       // Encender el otro
       pwm_set_gpio_level(PWM_CALEFACCION, control_p);
     }
