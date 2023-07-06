@@ -19,9 +19,9 @@ extern float setpoint;
 // GPIOs analogicos
 #define NTC_GPIO  0
 #define SP_GPIO   1
-// pines de PWM
-#define PWM_CALENTAMIENTO 14
-#define PWM_ENFRIAMIENTO 15
+// Pines de PWM
+#define PWM_ENFRIAMIENTO 14
+#define PWM_CALEFACCION 15
 
 // Tiempo de refresco para el siete segmentos
 #define SLEEP_MS 10
