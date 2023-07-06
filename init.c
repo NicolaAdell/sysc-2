@@ -8,7 +8,8 @@ float setpoint = 0.0;
 /*
  * @brief Inicializacion de perifericos
  */
-
+ // Creo un repeating timer
+ struct repeating_timer timer;
  void init(void) {
   gpio_init(25);
   gpio_set_dir(25, GPIO_OUT);
@@ -16,8 +17,6 @@ float setpoint = 0.0;
   sleep(3000);
   // Inicializacion de UART
   stdio_init_all();
-  // Creo un repeating timer
-  struct repeating_timer timer;
   // Creo un callback para la interrupcion del timer
   add_repeating_timer_ms(ADC_DELAY_MS, muestreo_periodico, NULL, &timer);
   // Configuro el I2C0 a 100 KHz de clock
