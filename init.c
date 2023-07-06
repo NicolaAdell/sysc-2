@@ -33,10 +33,6 @@ float setpoint = 0.0;
   lcd_string("TEMP=");
   lcd_set_cursor(1, 0);
   lcd_string("SETP=");
-  gpio_init(25);
-  gpio_set_dir(25, GPIO_OUT);
-  gpio_put(25, 1);
-  sleep_ms(5000);
   // Inicializo ADC
   adc_init();
   // Inicializo el GPIO del NTC como entrada analogica
@@ -57,6 +53,10 @@ float setpoint = 0.0;
   // - Ancho de pulso inicial del 0%
   pwm_set_gpio_level(PWM_ENFRIAMIENTO, 0);
   pwm_set_gpio_level(PWM_CALEFACCION, 0);
+  gpio_init(25);
+  gpio_set_dir(25, GPIO_OUT);
+  gpio_put(25, 1);
+  sleep_ms(5000);
 }
 
 /*
