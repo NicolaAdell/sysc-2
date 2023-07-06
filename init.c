@@ -5,9 +5,6 @@ float temperatura = 0.0;
 // Variable para guardar el valor del setpoint
 float setpoint = 0.0;
 
-const uint8_t PWM_ENFRIAMIENTO = 16;
-const uint8_t PWM_CALEFACCION = 17;
-
 /*
  * @brief Inicializacion de perifericos
  */
