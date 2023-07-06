@@ -53,10 +53,6 @@ float setpoint = 0.0;
   // - Ancho de pulso inicial del 0%
   pwm_set_gpio_level(PWM_ENFRIAMIENTO, 0);
   pwm_set_gpio_level(PWM_CALEFACCION, 0);
-  gpio_init(25);
-  gpio_set_dir(25, GPIO_OUT);
-  gpio_put(25, 1);
-  sleep_ms(5000);
 }
 
 /*
@@ -78,6 +74,10 @@ bool muestreo_periodico(struct repeating_timer *t) {
     temperatura = 1 / (log(1 / (4095. / adc_value - 1)) / beta + 1.0 / 298.15) - 273.15;
   }
   else {
+    gpio_init(25);
+    gpio_set_dir(25, GPIO_OUT);
+    gpio_put(25, 1);
+    sleep_ms(5000);
     // Canal 1: potenciometro. Calcular el valor de temperatura equivalente (4095 = 35 grados)
     setpoint = adc_value * 35 / 4095.;
     // Calcular error (temperatura - setpoint)
