@@ -17,10 +17,6 @@ float setpoint = 0.0;
   add_repeating_timer_ms(ADC_DELAY_MS, muestreo_periodico, NULL, &timer);
   // Configuro el I2C0 a 100 KHz de clock
   i2c_init(i2c0, 100 * 1000);
-  gpio_init(25);
-  gpio_set_dir(25, GPIO_OUT);
-  gpio_put(25, 1);
-  sleep_ms(5000);
   // Elijo GPIO4 como linea de SDA
   gpio_set_function(SDA_GPIO, GPIO_FUNC_I2C);
   // Elijo GPIO5 como linea de SCL
