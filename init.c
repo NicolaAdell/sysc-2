@@ -8,7 +8,12 @@ float setpoint = 0.0;
 /*
  * @brief Inicializacion de perifericos
  */
+
  void init(void) {
+  gpio_init(25);
+  gpio_set_dir(25, GPIO_OUT);
+  gpio_put(1);
+  sleep(3000);
   // Inicializacion de UART
   stdio_init_all();
   // Creo un repeating timer
