@@ -13,8 +13,8 @@ float setpoint = 0.0;
  void init(void) {
   gpio_init(25);
   gpio_set_dir(25, GPIO_OUT);
-  gpio_put(1);
-  sleep(3000);
+  gpio_put(25, 1);
+  sleep_ms(3000);
   // Inicializacion de UART
   stdio_init_all();
   // Creo un callback para la interrupcion del timer
